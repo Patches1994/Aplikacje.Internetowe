@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from "react";
+import Calculator from "./calculator/calculator";
+import TicTacToe from "./tic-tac-toe/tictactoe";
+import Puzzle from "./puzzle/puzzle";
+import MemoryGame from "./memory/memoryGame";
+import Header from "./header/header";
 
-function App() {
+const GameEnum = {
+  CALCULATOR: "calculator",
+  MEMORY: "memory",
+  TICTACTOE: "tic-tac-toe",
+  PUZZLE: "puzzle"
+};
+
+Object.freeze(GameEnum);
+
+const App = () => {
+  const [game, setGame] = useState(GameEnum.CALCULATOR);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header games={GameEnum} setGame={setGame} />
+      {game === GameEnum.CALCULATOR && <Calculator />}
+      {game === GameEnum.TICTACTOE && <TicTacToe />}
+      {game === GameEnum.PUZZLE && <Puzzle />}
+      {game === GameEnum.MEMORY && <MemoryGame />}
     </div>
   );
 }

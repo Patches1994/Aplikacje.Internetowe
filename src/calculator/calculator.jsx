@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Keypad from "./components/keypad";
 import Result from "./components/result";
+import CustomDiv from "../div/customDiv";
 
 const Calculator = () => {
     const [result, setResult] = useState("");
@@ -33,6 +34,7 @@ const Calculator = () => {
             <h1> Calculator </h1>
             <Result result={result} />
             <Keypad onClick={onClick} />
+            <CustomDiv />
         </div>
     )
 }
